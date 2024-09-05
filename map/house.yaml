@@ -1,4 +1,4 @@
-image: /home/farrel/catkin_ws/src/boustrophedon/map/house.pgm
+image: house.pgm
 resolution: 0.05
 origin:
   - -10
