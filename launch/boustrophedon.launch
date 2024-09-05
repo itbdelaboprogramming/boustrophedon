@@ -2,7 +2,7 @@
 <launch>
     <!-- Args -->
     <arg name="model" default="waffle" doc="model type [burger, waffle, waffle_pi]"/>
-    <arg name="map_file" default="$(find boustrophedon)/map/house.yaml"/>
+    <arg name="map_file" default="$(find boustrophedon)/map/simple.yaml"/>
     <arg name="open_rviz" default="true"/>
     <arg name="move_forward_only" default="false"/>
     <arg name="cmd_vel_topic" default="/cmd_vel" />
@@ -10,7 +10,7 @@
 
     <!-- Simulator -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/turtlebot3_house.world"/>
+        <arg name="world_name" value="$(find boustrophedon)/worlds/simple.world"/>
         <arg name="paused" value="false"/>
         <arg name="use_sim_time" value="true"/>
         <arg name="gui" value="true"/>
@@ -18,7 +18,7 @@
         <arg name="debug" value="false"/>
     </include>
     <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_waffle.urdf.xacro" />
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model turtlebot3 -x -3.0 -y 1.0 -z 0.0 -param robot_description" />
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model turtlebot3 -x -0.0 -y 0.0 -z 0.0 -param robot_description" />
   
     <!-- Turtlebot3 -->
     <arg name="multi_robot_name" default=""/>
