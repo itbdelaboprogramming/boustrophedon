@@ -18,7 +18,6 @@ def generate_boustrophedon_path():
     path = []
     pose = PoseStamped()
     pose.header.frame_id = "map"
-    pose.header.stamp = rospy.Time.now()
     pose.pose.position.x = arena_length/2 - robot_length
     pose.pose.position.y = arena_width/2 - robot_length
     yaw = 3.14
@@ -54,6 +53,7 @@ def boustrophedon_node():
         euler = euler_from_quaternion([pose.pose.orientation.x, pose.pose.orientation.y, pose.pose.orientation.z, pose.pose.orientation.w])
         yaw = euler[2]
         print(f"Sending goal to x: {pose.pose.position.x}, y: {pose.pose.position.y}, yaw: {math.degrees(yaw)}")
+        pose.header.stamp = rospy.Time.now()
         goal = move_base_msgs.msg.MoveBaseGoal(pose)
 
         # Sends the goal to the action server.
